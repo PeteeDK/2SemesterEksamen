@@ -4,11 +4,14 @@ class View(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
 
+        #Check in button
+        self.checkIn_button = ttk.Button(text="Check In!",command=self.CheckIn_button_clicked)
+        self.checkIn_button.grid(row =0, column=2)
 
-        self.label = ttk.Label(self, text='MainPage')
-        self.label.grid(row=1, column=0)
 
-        self.CheckIn_button = ttk.Button(self, text="Check in", command= self.Checkin_button.clicked)
+        #check out button
+        self.checkout_button = ttk.Button(text="Check Out!")
+        self.checkout_button.grid(row=1, column=2)
 
         self.controller = None
 
