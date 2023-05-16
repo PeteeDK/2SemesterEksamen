@@ -1,6 +1,6 @@
 class Person:
 
-    def __init__(self,id,name,adress,phoneNr):
+    def __init__(self, id, name, adress, phoneNr):
         self.__Id = id
         self.__Name = name
         self.__Adress = adress
