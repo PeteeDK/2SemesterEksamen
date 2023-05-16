@@ -1,20 +1,17 @@
-import customtkinter
-customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("green")
-root=customtkinter.CTk()
-root.geometry("500x350")
-def login():
-    print("Login test")
-frame= customtkinter.CTkFrame(master=root)
-frame.pack(pady=20, padx=60, fill="both", expand=True )
-label=customtkinter.CTkLabel(master=frame, text="login System" , font=("Roboto", 24))
-label.pack(pady=12, padx=10)
-entry1=customtkinter.CTkEntry(master=frame, placeholder_text="Username")
-entry1.pack(pady=12, padx=10)
-entry2=customtkinter.CTkEntry(master=frame, placeholder_text="Password", show="*")
-entry2.pack(pady=12, padx=10)
-button= customtkinter.CTkButton(master=frame, text="login" , command="login")
-button.pack(pady=12, padx=10)
-checkBox= customtkinter.CTkCheckBox(master=frame, text="Remember me")
-checkBox.pack(pady=12, padx=10)
-root.mainloop()
+from tkinter import ttk
+
+class View(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+
+        self.label = ttk.Label(self, text='MainPage')
+        self.label.grid(row=1, column=0)
+
+        self.CheckIn_button = ttk.Button(self, text="Check in", command= self.Checkin_button.clicked)
+
+        self.controller = None
+
+    def CheckIn_button_clicked(self, controller):
+        self.controller = controller
+

@@ -1,23 +1,16 @@
-import tkinter as tk
+from tkinter import ttk
+
+class View(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
 
 
-root = tk.Tk()
-canvas = tk.Canvas(root, height=400, width=300)
-canvas.pack()
+        self.label = ttk.Label(self, text='MainPage')
+        self.label.grid(row=1, column=0)
 
+        self.CheckIn_button = ttk.Button(self, text="Check in", command= self.Checkin_button.clicked)
 
-frame = tk.Frame(root, bg='#80c1ff', bd=5)
-frame.place(relx=0.5, rely=0.1, relwidth=0.75, relheight=0.1, anchor='n')
+        self.controller = None
 
-entry = tk.Entry(frame, font=40)
-entry.place(relwidth=0.65, relheight=1)
-
-
-
-lower_frame = tk.Frame(root, bg='#80c1ff', bd=10)
-lower_frame.place(relx=0.5, rely=0.25, relwidth=0.75, relheight=0.6, anchor='n')
-
-label = tk.Label(lower_frame)
-label.place(relwidth=1, relheight=1)
-
-root.mainloop()
+    def CheckIn_button_clicked(self, controller):
+        self.controller = controller
