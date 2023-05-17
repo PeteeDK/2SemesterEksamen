@@ -1,11 +1,15 @@
 import tkinter as tk
 import FrontEnd as FrontEnd
+from Backend.User import User
 from FrontEnd import MainPage
+
+user1 = User("jens","KBH","+4500000","JensManden","2134435")
 
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
+
         self.title('CheckInSystem')
 
         # create a view and place it on the root window

@@ -1,8 +1,7 @@
-from CheckInAndOut import CheckInAndOut
 from Person import Person
 
 
-class User(Person,CheckInAndOut):
+class User(Person):
 
     def __init__(self, name, adress, phoneNr, username, password):
         super().__init__(self, name, adress, phoneNr)
