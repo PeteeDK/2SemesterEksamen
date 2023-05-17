@@ -1,14 +1,7 @@
-import tkinter as tk
+import tkinter as ttk
 
-root = tk.Tk()
-canvas = tk.Canvas(root)
-canvas.pack()
+class View(ttk.Frame):
 
-#Check in
-button = tk.Button(canvas,text="Check In")
-button.place(relx=0, relheight=.2, relwidth=0.3)
+    def __init__(self,parent):
+        super().__init__(parent)
 
-#Check Out
-button = tk.Button(canvas,text="Check Out")
-button.place(relx=0, rely=.2, relheight=.2, relwidth=0.3)
-root.mainloop()
