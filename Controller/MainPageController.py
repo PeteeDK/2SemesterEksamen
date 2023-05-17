@@ -3,7 +3,18 @@ import Backend as Backend
 
 
 class Controller:
-    def __init__(self, CheckInAndOut, View):
-        Backend.CheckInAndOut = CheckInAndOut
-        FrontEnd.MainPage = View
+    def __init__(self, checkInAndOut, view):
+        Backend.CheckInAndOut = checkInAndOut
+        FrontEnd.MainPage = view
+
+
+
+    def CheckIn(self):
+
+        try:
+            self.CheckIn()
+
+        except: pass
+
+
 
