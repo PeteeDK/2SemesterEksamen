@@ -30,3 +30,5 @@ class Person:
 
     def SetCheckInStatusTo(self, x):
         self.__CheckedInStatus = x
+
+
