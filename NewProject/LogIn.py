@@ -1,6 +1,7 @@
 import getpass
 import itertools
 from mysql.connector import connect
+from NewProject.Menu import Menu
 
 
 class Login:
@@ -26,7 +27,9 @@ class Login:
                         print("You are now logged in!")
                         return True
                     else:
-                        print("Wrong password")
+                        print("Wrong password \n"
+                              "Try again")
+                        Menu.Run()
                 except Exception as e:
                     print(e)
         except Exception as e:

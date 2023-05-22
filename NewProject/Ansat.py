@@ -4,7 +4,7 @@ from tabulate import tabulate
 import NewProject.LogIn
 
 
-class Ansat():
+class Ansat:
 
     @staticmethod
     def CreateUser():
