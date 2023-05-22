@@ -6,7 +6,9 @@ from NewProject.Vagt import Vagt
 class TestApp:
     user = Ansat()
 
-    user.CreateUser()
+    user.UpdateUser()
+
+    #user.CreateUser()
 
 
 
