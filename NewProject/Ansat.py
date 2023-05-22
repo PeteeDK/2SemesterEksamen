@@ -6,7 +6,8 @@ import NewProject.LogIn
 
 class Ansat():
 
-    def CreateUser(self):
+    @staticmethod
+    def CreateUser():
         conn = connect(host='127.0.0.1', user='root', database='employee', password='meep')
         cursor = conn.cursor()
         id = 1
@@ -43,7 +44,8 @@ class Ansat():
             print(Error)
         conn.close()
 
-    def UpdateUsersAdmin(self):
+    @staticmethod
+    def UpdateUsersAdmin():
         conn = connect(host='127.0.0.1', user='root', database='employee', password='meep')
         cursor = conn.cursor()
         IdListOfTuples = []

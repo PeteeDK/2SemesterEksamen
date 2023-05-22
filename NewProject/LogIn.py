@@ -1,18 +1,16 @@
+import getpass
 import itertools
 from mysql.connector import connect
 
 
 class Login:
 
-    medarbejderId = None
-
-
-    def LogIn(self):
+    @staticmethod
+    def LogIn():
         conn = connect(host='127.0.0.1', user='root', database='employee', password='meep')
         cursor = conn.cursor()
-        id = input("Indtast dit Id")
-        password = input("Indtast dit password: ")
-        self.medarbejderId = id
+        id = input("Indtast dit Id: ")
+        password = getpass.getpass("Indtast dit password: ")
         checkUnQuery =("SELECT id FROM employees")
         try:
             cursor.execute(checkUnQuery)
@@ -23,16 +21,15 @@ class Login:
                 try:
                     cursor.execute(checkPwQuery)
                     passwordlistTuple = cursor.fetchall()
-                    print(passwordlistTuple)
                     listOfPw = [item for t in passwordlistTuple for item in t]
                     if password in listOfPw:
                         print("You are now logged in!")
                         return True
+                    else:
+                        print("Wrong password")
                 except Exception as e:
                     print(e)
         except Exception as e:
             print(e)
 
 
-    def GetID(self):
-        return self.medarbejderId
