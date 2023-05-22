@@ -1,6 +1,8 @@
 from mysql.connector import connect
 from tabulate import tabulate
 
+import NewProject.LogIn
+
 
 class Ansat():
 
@@ -25,13 +27,14 @@ class Ansat():
         name = input("Intast navnet på den nye bruger: ")
         adress = input("Intast adressen på den nye bruger: ")
         phoneNr = input("Indtast telefon nummeret på den nye bruger: ")
+        password = input("Indtast et password for den nyebruger: ")
 
         # Inserting bit
         insertNewUser = (
-            "INSERT INTO employees(id, name, adress, phonenr)"
-            "VALUES (%s,%s,%s,%s)"
+            "INSERT INTO employees(id, name, adress, phonenr,password)"
+            "VALUES (%s,%s,%s,%s,%S)"
         )
-        data = [id, name, adress, phoneNr]
+        data = [id, name, adress, phoneNr,password]
         try:
             cursor.execute(insertNewUser, data)
             conn.commit()
@@ -40,7 +43,7 @@ class Ansat():
             print(Error)
         conn.close()
 
-    def UpdateUser(self):
+    def UpdateUsersAdmin(self):
         conn = connect(host='127.0.0.1', user='root', database='employee', password='meep')
         cursor = conn.cursor()
         IdListOfTuples = []
@@ -110,5 +113,27 @@ class Ansat():
                             conn.commit()
                         except Exception as e:
                             print(e)
+                    elif whatNeedsUpdating == "3":
+                        newPhoneNr = input("Indtast det nye telefon nummer: ")
+                        updatePhoneQuery =(
+                            f"update employee.employees Set phonenr = '{newPhoneNr}' Where (`id` = '{dataToString}');"
+                        )
+                        try:
+                            cursor.execute(updatePhoneQuery)
+                            conn.commit()
+                            print("Telefon nummer updateret")
+                        except Exception as e:
+                            print(e)
                 except Exception as e:
                     print(e)
+
+    @staticmethod
+    def GetEmployeName():
+        conn = connect(host='127.0.0.1', user='root', database='employee', password='meep')
+        cursor = conn.cursor()
+        getNameQuery = (f"SELECT ´name´ FROM employees WHERE ´id´ = {NewProject.LogIn.Login().GetID()}")
+        try:
+            cursor.execute(getNameQuery)
+            conn.commit()
+        except Exception as e:
+            print(e)
