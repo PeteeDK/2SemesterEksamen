@@ -32,7 +32,7 @@ class Ansat:
 
         # Inserting bit
         insertNewUser = (
-            "INSERT INTO employees(id, name, adress, phonenr,password)"
+            "INSERT INTO employees(id, name, adress, phonenr, password)"
             "VALUES (%s,%s,%s,%s,%S)"
         )
         data = [id, name, adress, phoneNr,password]

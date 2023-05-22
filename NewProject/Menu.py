@@ -1,5 +1,5 @@
 from NewProject import LogIn
-from NewProject.Ansat import Ansat
+from Ansat import Ansat
 
 
 class Menu:
@@ -17,11 +17,11 @@ class Menu:
                        " - 2 for at updatere en eksisterende brugeres info\n"
                        " - 3 for at lukke programmet\n"
                        " - ")
-        if option == 1:
+        if option == "1":
             Ansat.CreateUser()
-        elif option == 2:
+        elif option == "2":
             Ansat.UpdateUsersAdmin()
-        elif option == 3:
+        elif option == "3":
             exit()
 
     @staticmethod
@@ -30,8 +30,8 @@ class Menu:
             option = input("Tryk 1 for at logge ind "
                         "eller tryk på en vilkålig knap for at lukke programmet: ")
             if option == "1":
-                if LogIn.Login.LogIn():
+                if LogIn.Login.LogIn() == True:
                     Menu.HovedeMenu()
                     break
-                else:
-                    exit()
+            else:
+                exit()
