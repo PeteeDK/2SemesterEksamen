@@ -19,7 +19,6 @@ class Ansat:
         try:
             cursor.execute(CheckForLastUsedId)
             result = cursor.fetchall()
-
             for row in result:
                 id = id + 1
         except Exception as e:
@@ -33,9 +32,9 @@ class Ansat:
         # Inserting bit
         insertNewUser = (
             "INSERT INTO employees(id, name, adress, phonenr, password)"
-            "VALUES (%s,%s,%s,%s,%S)"
+            "VALUES (%s,%s,%s,%s,%s)"
         )
-        data = [id, name, adress, phoneNr,password]
+        data = (id, name, adress, phoneNr, password)
         try:
             cursor.execute(insertNewUser, data)
             conn.commit()
@@ -70,6 +69,7 @@ class Ansat:
         try:
             cursor.execute(PrintAllUseres)
             result = cursor.fetchall()
+            print("\n")
             print(tabulate(result, headers=["ID", "Name"]))
         except Exception as e:
             print(e)
@@ -90,11 +90,13 @@ class Ansat:
                 try:
                     cursor.execute(SelectUserForUpdate, data)
                     userInfo = cursor.fetchall()
-                    print(tabulate(userInfo, headers=["Navn", "Adresse", "Tlf"]))
+                    print(tabulate(userInfo, headers=["Navn", "Adresse", "Tlf","PW"]))
+                    print("\n")
                     print("Hvad vil du opdatere? ")
                     whatNeedsUpdating = input("Opdatere navn tryk: 1\n"
                                               "Opdatere adresse tryk: 2\n"
-                                              "Opdatere telefon nummer tryk: 3\n")
+                                              "Opdatere telefon nummer tryk: 3\n"
+                                              )
                     if whatNeedsUpdating == "1":
                         newName = input("Intast det nye navn: ")
                         updateNameQuery = (

@@ -24,7 +24,7 @@ class Login:
                     passwordlistTuple = cursor.fetchall()
                     listOfPw = [item for t in passwordlistTuple for item in t]
                     if password in listOfPw:
-                        print("You are now logged in!")
+                        print("You are now logged in!\n")
                         return True
                     else:
                         print("Wrong password \n"
